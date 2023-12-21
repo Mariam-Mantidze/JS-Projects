@@ -510,6 +510,54 @@ Example Output
 
 
 
+function cokeMachine() {
+    // initialize variables for counting coins, userInput, total coke price and price that is left.
+    let count = 0;
+    let userInput, userCoin;
+    let coke_price = 50;
+    let priceLeft = coke_price;
+
+    while (count < coke_price) {
+        userInput = prompt(`Please add a coin. We only accept 5, 10 and 25 cents. You have ${priceLeft} cents to pay.`);
+    
+        // check for calcellation
+        if (userInput === null) {
+            alert("End of program.")
+            return;
+        }
+        // convert userInput to integer and handle empty string
+        userCoin = userInput === "" ? NaN : parseInt(userInput);
+
+       
+        // check for invalid inputs
+        if (userCoin !== 10 && userCoin !== 25 && userCoin !== 5 || isNaN(userCoin)) {
+            alert ("Please add a coin. We only accept 5, 10 and 25 cents.");
+            continue; // invalid input so prompt again;
+        } 
+
+            // update count and calculate price left
+            count += userCoin;
+            priceLeft = coke_price - count;
+
+            // handle overpayment
+            if (count > coke_price) {
+                let userChange = count - coke_price;
+                alert (`You bough the coke. Your change is ${userChange} cents.`)
+                return;
+            }
+            // if exact amount is paid
+            if (count === coke_price) {
+                alert(`You bought the coke. Enjoy!`)
+                return;
+            }
+        }
+    }
+
+
+
+cokeMachine();
+
+
 
 
 
