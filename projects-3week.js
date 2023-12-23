@@ -722,38 +722,65 @@ AAA222 იქნება მისაღები, თუმცა AAA22A ა�
 
 
 
-function hadnlingUserInput() {
-    let ROR;
+// function hadnlingUserInput() {
+//     let ROR;
 
-    while (true) {
-        ROR = prompt("Type in the rate of return.");
+//     while (true) {
+//         ROR = prompt("Type in the rate of return.");
 
-        // handle cancellation
-        if (ROR === null) {
-            alert ("End of program.")
-            return;
+//         // handle cancellation
+//         if (ROR === null) {
+//             alert ("End of program.")
+//             return;
+//         }
+//         // normalize userInput to numbers
+//         ROR = Number(ROR);
+
+//         // handle non-numeric input and zero input
+//         if (ROR === 0 || isNaN(ROR)) {
+//             alert ("Sorry, not a valid input.");
+//             continue;
+//         }
+
+//         // handle success
+//         alert (`It will take ${calculateDoublingTime(ROR)} years to double your initial investment.`)
+//         return calculateDoublingTime(ROR);
+
+//     }
+// }
+// hadnlingUserInput()
+
+// function calculateDoublingTime(ror) {
+//     let years = Math.ceil(72 / ror);
+//     return years;
+// }
+
+/*
+პროექტი 45 - Multiplication Table - გამრავლების ტაბულა
+შექმენით პროგრამა, რომელიც დააგენერირებს გამრავლების ტაბულას რიცხვებისთვის 0-დან 12-მდე.
+გამოიყენეთ nested loop ამ პროგრამის დასასრულებლად.
+*/
+
+// for loop i-ს დასაგენერირებლად და ნესთიდ ლუპი j-s დასაგენერირებლად/
+//  i = 0; j = 0; i = 0; j = 1; i = 0; 
+
+function multiplicationTable() {
+    // initialize the variable to build results in
+    let table = "";
+    // loop and perform calculations
+    for (let i = 0; i <= 12; i++) {
+        for (let j = 0; j <= 12; j++) {
+            table += `${i} * ${j} = ${i * j}\n`; // add each calculation to the table
         }
-        // normalize userInput to numbers
-        ROR = Number(ROR);
-
-        // handle non-numeric input and zero input
-        if (ROR === 0 || isNaN(ROR)) {
-            alert ("Sorry, not a valid input.");
-            continue;
-        }
-
-        // handle success
-        alert (`It will take ${calculateDoublingTime(ROR)} years to double your initial investment.`)
-        return calculateDoublingTime(ROR);
-
+        // add extra new line for spacing after each row
+        table += '\n'
     }
+    // return the table;
+    return table;
+    
 }
-hadnlingUserInput()
 
-function calculateDoublingTime(ror) {
-    let years = Math.ceil(72 / ror);
-    return years;
-}
+console.log(multiplicationTable());
 
 
 
