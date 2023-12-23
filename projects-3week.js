@@ -575,43 +575,125 @@ Example Output
 
 
 
-function settingUpTwtr() {
+// function settingUpTwtr() {
 
-    let userInput;
+//     let userInput;
+
+//     while (true) {
+//     userInput = prompt("Please enter a word: ");
+
+//     // handle cancellation
+//     if (userInput === null) {
+//         alert("End of program.")
+//         return;
+//     }
+
+//     // handle invalid input and re-prompt user
+//     if (userInput.match(/[^a-zA-Z\s]/g)) {
+//         alert ("Please enter a valid word");
+//         continue;
+//     }
+
+//     // alert for succsess and return user string without vowels.
+//     alert (`Your word without vowels: '${replaceVowels(userInput)}'.`);
+//     return replaceVowels(userInput);
+
+//     }
+    
+// }
+// settingUpTwtr()
+
+// // function for replacing vowels in strings
+// function replaceVowels(string) {
+//     let pattern = /[aeiou]/gi;
+//     return string.replaceAll(pattern, "");
+// }
+
+/*
+პროექტი 43 - Vanity Plates - სანომრე ნიშნები
+მასაჩუსეტში შეგიძლიათ თქვენი მანქანისთვის თქვენთვის სასურველი სანომრე ნიშნები აიღოთ, 
+იმ ასოებითა და ციფრებით, რაც გნებავთ, მაგრამ რამდენიმე წესი უნდა იყოს დაცული:
+
+ყველა სანომრე ნიშანი უნდა იწყებოდეს მინიმუმ ორი ასოთი.
+შეიძლება შეიცავდეს მაქსიმუმ 6 სიმბოლოს (ასოს ან რიცხვს) და მინიმუმ 2 სიმბოლოს.
+ციფრების გამოყენება არ შეიძლება სანომრე ნიშნის შუაში; ისინი ბოლოს უნდა იყოს. მაგალითად, 
+AAA222 იქნება მისაღები, თუმცა AAA22A ამ წესს ვერ დააკმაყოფილებს.
+გამოყენებული პირველი რიცხვი არ შეიძლება იყოს "0".
+დაშვებული არ არის წერტილების, სივრცეების (space) და პუნქტუაციის ნიშნების გამოყენება.
+შექმენით პროგრამა, რომელიც მოუწოდებს მომხმარებელს სანომრე ნიშნის შეყვანისკენ და და შემდეგ output-ად 
+გამოაქვს ან valid (თუ ნიშნები აკმაყოფილებს ყველა მოთხოვნას), ან - Invalid. დაუშვით, რომ მომხმარებლის input-ის ყველა 
+ასო იქნება დიდი.
+*/
+
+// pattern /^[A-Za-z]{2}\d{4}$/
+
+// გავცხრილოთ მაქსიმუმ იყოს length 6, პირველი ინდექსი რომ არ იყოს 0
+// რეჯექსი, რომ გავცრხილოთ პუნქტუაციის ნიშნები, სფეისები და ა.შ.
+// პირველი ორი ასო აუცილებლად იყოს letter: /^[A-Za-z]{2}
+// შუაში რომ არ იყოს რიცხვები 🤔
+
+
+function validateUserPlates() {
+    let userPlates;
 
     while (true) {
-    userInput = prompt("Please enter a word: ");
+        userPlates = prompt("Please enter a desired plate number.");
+       
+        // handle cancellation
+        if (userPlates === null) {
+            alert ("End of the program.");
+            return
+        }
+        // normalize to upper case
 
-    // handle cancellation
-    if (userInput === null) {
-        alert("End of program.")
-        return;
+        userPlates = userPlates.toUpperCase()
+
+        // check for invalid input and prompt again.
+        if (!checkPlates(userPlates)) {
+            alert ("Not a valid format. Please input maximum 6 characters. First 2 characters must be letters. Numbers should be at the end and should not start with zero.")
+            continue;
+        }
+        // If user was successfull display the success message
+        if (checkPlates(userPlates)) {
+            alert(`You have sucessfully chosen '${userPlates}' as your plate number!`);
+            return;
+        }
+    }
+}
+
+validateUserPlates()
+
+
+
+function checkPlates(plates) {
+    // create pattern for plates
+    let pattern = /^[A-Z]{2}[A-Z0-9]{1,4}$/;
+    
+    
+    // check for character count. Should be max 6;
+    if (plates.length > 6) { //  თუ სწორად გავიგე პირობა და მაქს. 6 არის. თუ არა და < 6-ზეც false დაბრუნდებოდა და იქნებოდა დასაშები მხოლოდ 6 ქერექთერი.
+        return false;
     }
 
-    // handle invalid input and re-prompt user
-    if (userInput.match(/[^a-zA-Z\s]/g)) {
-        alert ("Please enter a valid word");
-        continue;
-    }
-
-    // aler
-    alert (`Your word without vowels: '${replaceVowels(userInput)}'.`);
-    return replaceVowels(userInput);
-
+    // check for pattern match
+    if (!plates.match(pattern)) {
+        return false;
     }
     
+    
+    // find index of first occurance of number
+    let index = plates.search(/\d/);
+    // extract the number part from the string
+    if (index !== -1) {
+       let numbers = plates.substring(index);
+           // check if it starts with zero.
+       if (numbers.startsWith("0")) {
+        return false;
+    }
 }
-settingUpTwtr()
+    return true;
 
-function replaceVowels(string) {
-    let pattern = /[aeiou]/gi
-
-    return string.replaceAll(pattern, "");
 }
-
-
-
-
 
 
 
