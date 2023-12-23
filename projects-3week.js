@@ -764,24 +764,102 @@ AAA222 იქნება მისაღები, თუმცა AAA22A ა�
 // for loop i-ს დასაგენერირებლად და ნესთიდ ლუპი j-s დასაგენერირებლად/
 //  i = 0; j = 0; i = 0; j = 1; i = 0; 
 
-function multiplicationTable() {
-    // initialize the variable to build results in
-    let table = "";
-    // loop and perform calculations
-    for (let i = 0; i <= 12; i++) {
-        for (let j = 0; j <= 12; j++) {
-            table += `${i} * ${j} = ${i * j}\n`; // add each calculation to the table
-        }
-        // add extra new line for spacing after each row
-        table += '\n'
-    }
-    // return the table;
-    return table;
+// function multiplicationTable() {
+//     // initialize the variable to build results in
+//     let table = "";
+//     // loop and perform calculations
+//     for (let i = 0; i <= 12; i++) {
+//         for (let j = 0; j <= 12; j++) {
+//             table += `${i} * ${j} = ${i * j}\n`; // add each calculation to the table
+//         }
+//         // add extra new line for spacing after each row
+//         table += '\n'
+//     }
+//     // return the table;
+//     return table;
     
+// }
+
+// console.log(multiplicationTable());
+
+
+/*
+პროექტი 46 - Karvonen Heart Rate
+Karvonen Heart Rate არის ერთ-ერთი მეთოდი თქვენი პულსის დადგენისთვის.
+ შექმენით პროგრამა, რომელიც შეეკითხება მოხმარებელს მის ასაკსა და გულისცემას,
+  შემდეგ კი ამ მონაცემებზე დაყრდნობით დაითვლის პულსს, სხვადასხვა ინტენსიურობის მიხედვით 
+  (55 % -იდან 95 % -მდე). გამოიტანეთ ამ ყველაფრის ამსახველი ცხრილი. ისეთი, როგორიც მაგალითშია ნაჩვენები.
+
+გამოსათვლელი ფორმულა: TargetHeartRate = (((220 - age) - restingHR) * intensity) + restingHR
+
+ხელით არ დაწეროთ პროცენტები, გამოიყენეთ ციკლი და გაზარდეთ 5 პროცენტით 55-95 მნიშვნელობები.
+გააკეთეთ ვალიდაცია, არ მისცეთ მომხმარებელს საშუალება რომ შეიყვანოს input-ში რიცხვების გარდა სხვა სიმბოლოები.
+*/
+
+
+// გასასუფთავაბელია კოდი, გასასწორებელია ვალიდაცია მთლიანად.
+
+function karvorenHeartRateCalculation(age, restingHR) {
+    let target = "";
+ 
+    // target გამოვთვალეთ
+    for (let i = 0.55; i <= 1; i += 0.05) {
+        let intensity = i;
+        let formula = (((220 - age) - restingHR) * intensity) + restingHR;
+        target += `${Math.floor(percentConverter(intensity))}% | ${(formula.toFixed(0))} bpm \n`
+    }
+    
+    return `Intensity | Rate\n-------------|-------- \n${target}`;
+
+
 }
 
-console.log(multiplicationTable());
+function percentConverter(number) {
+    return number * 100;
+}
 
+// გასასწორებელია 
+function getUserInput () {
+    let userAge, userHeartRate;
+
+    while (true) {
+        userAge = prompt("Enter your age:");
+        validateUserInput(userAge);
+
+        userHeartRate = prompt("Enter your resting pulse:");
+        validateUserInput(userHeartRate);
+
+       
+        // convert userInputs to numbers;
+        userAge = Number(userAge); 
+        userHeartRate = Number(userHeartRate);
+
+       
+        console.log(`${karvorenHeartRateCalculation(userAge, userHeartRate)}`);
+        return karvorenHeartRateCalculation(userAge, userHeartRate);
+
+    }
+}
+
+getUserInput()
+
+// გასასწორებელია
+function validateUserInput(input) {
+    while (true) {
+         // handle cancellation
+    if (input === null) {
+        alert("Ending program.")
+        return;
+    }
+     // handle non-numeric input
+     if (isNaN(input)) {
+        alert ("Please input only numbers.");
+        continue;
+    }
+    return input;
+    }  
+
+}
 
 
 
