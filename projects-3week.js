@@ -633,66 +633,126 @@ AAA222 იქნება მისაღები, თუმცა AAA22A ა�
 // შუაში რომ არ იყოს რიცხვები 🤔
 
 
-function validateUserPlates() {
-    let userPlates;
+// function validateUserPlates() {
+//     let userPlates;
+
+//     while (true) {
+//         userPlates = prompt("Please enter a desired plate number.");
+       
+//         // handle cancellation
+//         if (userPlates === null) {
+//             alert ("End of the program.");
+//             return
+//         }
+//         // normalize to upper case
+
+//         userPlates = userPlates.toUpperCase()
+
+//         // check for invalid input and prompt again.
+//         if (!checkPlates(userPlates)) {
+//             alert ("Not a valid format. Please input maximum 6 characters. First 2 characters must be letters. Numbers should be at the end and should not start with zero.")
+//             continue;
+//         }
+//         // If user was successfull display the success message
+//         if (checkPlates(userPlates)) {
+//             alert(`You have sucessfully chosen '${userPlates}' as your plate number!`);
+//             return;
+//         }
+//     }
+// }
+
+// validateUserPlates()
+
+
+
+// function checkPlates(plates) {
+//     // create pattern for plates
+//     let pattern = /^[A-Z]{2}[A-Z0-9]{0,4}$/; // აქაც თუ სწორად გავიგე, 2 ასო უნდა იყოს, და რიცხვების რაოდენობას არ აქვს მნიშვნ. ამიტომ, თუ მაგ. 2 AA შეიყვანა, უკვე ვალიდურია. თუ არასწორად გავიგე პირობა, ჩავასწორებდი რეჯექსის პირობას
+    
+    
+//     // check for character count. Should be max 6;
+//     if (plates.length > 6) { //  თუ სწორად გავიგე პირობა და მაქს. 6 არის. თუ არა და < 6-ზეც false დაბრუნდებოდა და იქნებოდა დასავშები მხოლოდ 6 ქერექთერი.
+//         return false;
+//     }
+
+//     // check for pattern match
+//     if (!plates.match(pattern)) {
+//         return false;
+//     }
+    
+    
+//     // find index of first occurance of number
+//     let index = plates.search(/\d/);
+//     // extract the number part from the string
+//     if (index !== -1) {
+//        let numbers = plates.substring(index);
+//            // check if it starts with zero.
+//        if (numbers.startsWith("0")) {
+//         return false;
+//     }
+// }
+//     return true;
+
+// }
+
+/*
+პროექტი 44 - Handling Bad Input - ცუდი Input-ის მართვა
+
+72-ის წესი სწრაფი მეთოდია იმის შესაფასებლად, თუ რამდენი ხანი დასჭირდება თქვენი ინვესტიციის გაორმაგებას. 
+ამის გამოსათვლელად 72 მის მოსალოდნელ შემოსავალზე (ROR) უნდა გავყოთ. ეს კარგი ინსტრუმენტია, რომელიც დაგეხმარებათ გაარკვიოთ, 
+არის თუ არა აქციები, ობლიგაციები ან ანაბრები თქვენთვის მომგებიანი. ასევე, კარგი პროგრამაა input-ის გასატესტად, 
+რადგან რადგან კომპიუტერებს ნულზე გაყოფა არ შეუძლიათ.
+
+იმის ნაცვლად, რომ პროგრამა შეაჩეროთ, როდესაც მომხმარებელი არასწორ input-ს შეიყვანს,
+ შეგიძლიათ უბრალოდ განაგრძოთ input-ის მოთხოვნა, სანამ არ მიიღებთ ვალიდურ ჩანაწერს. შექმენით კალკულატორი, 
+ რომელიც მოგთხოვთ ინვესტიციის Rate of Return-ს (ROR) და გამოთვლის, რამდენი წელი დასჭირდება თქვენი ინვესტიციის გაორმაგებას.
+
+ფორმულა შემდეგია: years = 72 /r, სადაც r არის ROR-ის მითითებული მაჩვენებელი.
+
+არ მისცეთ მომხმარებელს საშუალება, პროგრამაში ჩაწეროს 0.
+არ მისცეთ საშუალება, ჩაწეროს არა-რიცხვითი input.
+გამოიყენეთ ციკლი (loop) ცუდი input-ისთვის, რათა დარწმუნდეთ, რომ მომხმარებელი ვალიდურ მნიშვნელობას შეიყვანს.
+
+*/
+
+// ROR ცვლადი - მომხარებლის ინფუთი
+// ფორმულა - ცალკე ფუნქცია - სადაც years = 72/ror. return ror;
+// ფუნქცია, სადაც დავჰენდლავთ ლოგიკას - მომხარებელი ვერ შეიყვანს 0-ს. ვერ შეიყვანს არა რიცხვით ინფუთს. 
+
+
+
+
+function hadnlingUserInput() {
+    let ROR;
 
     while (true) {
-        userPlates = prompt("Please enter a desired plate number.");
-       
+        ROR = prompt("Type in the rate of return.");
+
         // handle cancellation
-        if (userPlates === null) {
-            alert ("End of the program.");
-            return
-        }
-        // normalize to upper case
-
-        userPlates = userPlates.toUpperCase()
-
-        // check for invalid input and prompt again.
-        if (!checkPlates(userPlates)) {
-            alert ("Not a valid format. Please input maximum 6 characters. First 2 characters must be letters. Numbers should be at the end and should not start with zero.")
-            continue;
-        }
-        // If user was successfull display the success message
-        if (checkPlates(userPlates)) {
-            alert(`You have sucessfully chosen '${userPlates}' as your plate number!`);
+        if (ROR === null) {
+            alert ("End of program.")
             return;
         }
+        // normalize userInput to numbers
+        ROR = Number(ROR);
+
+        // handle non-numeric input and zero input
+        if (ROR === 0 || isNaN(ROR)) {
+            alert ("Sorry, not a valid input.");
+            continue;
+        }
+
+        // handle success
+        alert (`It will take ${calculateDoublingTime(ROR)} years to double your initial investment.`)
+        return calculateDoublingTime(ROR);
+
     }
 }
+hadnlingUserInput()
 
-validateUserPlates()
-
-
-
-function checkPlates(plates) {
-    // create pattern for plates
-    let pattern = /^[A-Z]{2}[A-Z0-9]{1,4}$/;
-    
-    
-    // check for character count. Should be max 6;
-    if (plates.length > 6) { //  თუ სწორად გავიგე პირობა და მაქს. 6 არის. თუ არა და < 6-ზეც false დაბრუნდებოდა და იქნებოდა დასაშები მხოლოდ 6 ქერექთერი.
-        return false;
-    }
-
-    // check for pattern match
-    if (!plates.match(pattern)) {
-        return false;
-    }
-    
-    
-    // find index of first occurance of number
-    let index = plates.search(/\d/);
-    // extract the number part from the string
-    if (index !== -1) {
-       let numbers = plates.substring(index);
-           // check if it starts with zero.
-       if (numbers.startsWith("0")) {
-        return false;
-    }
-}
-    return true;
-
+function calculateDoublingTime(ror) {
+    let years = Math.ceil(72 / ror);
+    return years;
 }
 
 
