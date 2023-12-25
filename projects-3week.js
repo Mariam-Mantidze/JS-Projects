@@ -16,7 +16,6 @@ Example Output
 შეამოწმეთ, ორივე სიტყვა ერთნაირი სიგრძისაა თუ არა.
 */
 
-
 // function isAnagram(str1, str2) {
 
 //         // check for length
@@ -24,7 +23,6 @@ Example Output
 //             alert ((`"${str1}" and "${str2}" are not anagrams.`))
 //             return false;
 //         }
-  
 
 //     str1 = str1.split("");
 //     str2 = str2.split("");
@@ -38,8 +36,7 @@ Example Output
 //         alert (`"${str1.join("")}" and "${str2.join("")}" are not anagrams.`)
 //      }
 //      return answer;
-     
-    
+
 //     // ----------  for ციკლით
 
 //     // for (let char of str1) {
@@ -62,7 +59,6 @@ Example Output
 //     return isAnagram(str1, str2);
 
 // }
-
 
 // function inputValidator(message) {
 //     let string;
@@ -118,8 +114,6 @@ Example Output
 //     let characterCount = 0;
 //     let passwordStrength = {strength: "normal"};
 
-  
-
 //     for (let i = 0; i < password.length; i++) {
 //         let char = password[i];
 
@@ -152,7 +146,6 @@ Example Output
 //         }
 //         return passwordStrength;
 
-
 //     }
 
 //     // function for generating a message
@@ -175,17 +168,12 @@ Example Output
 //             message += "very strong password.";
 //             break;
 //             default:
-//             message += "normal password.";  
+//             message += "normal password.";
 //         }
 //         return message;
 //     }
-    
-
 
 // console.log(generatePasswordMessage(password));
-
-
-
 
 /*
 პროექტი 38 - Months to Pay Off a Credit Card -
@@ -223,7 +211,6 @@ Example Output
 //     const months = countMonthsUntilPaidOff(userBalance, userAPR, userMonthlyPayment);
 //     console.log(`It will take you ${months} months to pay off this card.`);
 
-
 // }
 
 // main();
@@ -236,7 +223,6 @@ Example Output
 //         let n = -(1 / 30) * Math.log(1 + (balance / monthlyPayment) * (1 - Math.pow((1 + dailyRate), 30))) / Math.log (1 + dailyRate);
 //         return Math.ceil(n);
 
-        
 // }
 
 // // to check if user input is valid;
@@ -262,7 +248,6 @@ Example Output
 //         return response;
 //     }
 // }
-
 
 /*
 პროექტი 39 - Validating Inputs - Input-ების ვალიდაცია
@@ -300,21 +285,20 @@ Example Output
 // id
 // zip
 
-
 // function nameValidator (name) {
 //     if (name === "") {
 //        return "Name must be filled.";
 //     }
 //     else if (name.length < 2 || !isNaN(name)) {
 //        return `"${name}" is not a valid name. Name must be at least 2 characters long.`
-//     } 
+//     }
 //     return true;
 // }
 
 // function lastNameValidator (surName) {
 //     if (surName === "") {
 //        return `Last name must be filled.`;
-       
+
 //     } else if (surName.length < 2 || !isNaN(surName)) {
 //        return `"${surName}" is not a valid last name. Last name must be at least 2 characters long.`;
 
@@ -327,7 +311,7 @@ Example Output
 //     const result = pattern.test(id);
 
 //     if (!result) {
-//         return "Not a valid ID."; 
+//         return "Not a valid ID.";
 //     }
 //     return true;
 // }
@@ -341,8 +325,7 @@ Example Output
 //     return true;
 // }
 
-// // // ყველა ტიპის ვალიდაცია, ცალ-ცალკე ფუნქციების გამოძახება; 
-
+// // // ყველა ტიპის ვალიდაცია, ცალ-ცალკე ფუნქციების გამოძახება;
 
 // function main () {
 
@@ -354,7 +337,7 @@ Example Output
 //          alert ("Ending program.")
 //          return;
 //         }
-       
+
 //         const lastName = prompt("Enter your last name.");
 //         if (lastName === null) {
 //          alert ("Ending program.")
@@ -365,13 +348,13 @@ Example Output
 //          alert ("Ending program.")
 //          return;
 //         }
-     
+
 //         const zipCode = prompt("Enter your ZIP code");
 //         if (zipCode === null) {
 //          alert ("Ending program.")
 //          return;
 //         }
-     
+
 //         // validateInputs and continue the loop if the validation fails;
 //         isValid = validateInput(name, lastName, userId, zipCode);
 //         if (!isValid) {
@@ -379,40 +362,38 @@ Example Output
 //             console.log("Restarting the input flow. Please re-enter your information.");
 //         }
 //     }
-    
+
 //     console.log("Success!")
 
 // }
 // main()
 
-
 // function validateInput (name, surname, id, zipCode) {
 
-  
 //     let errors = [];
 
 //     let nameError = nameValidator(name);
 //     if (nameError !== true) {
 //         errors.push(nameError);
-     
+
 //     }
-    
+
 //     let surnameError = lastNameValidator(surname);
 //     if (surnameError !== true) {
 //         errors.push(surnameError);
-        
+
 //     }
 
 //     let idError = idValidator(id);
 //     if (idError !== true) {
 //         errors.push(idError);
-        
+
 //     }
 
 //     let zipCodeError = zipCodeValidator(zipCode);
 //     if (zipCodeError !== true) {
 //         errors.push(zipCodeError);
-        
+
 //     }
 
 //        // gather all errors and display to user and re-prompt if any error is remaining.
@@ -422,7 +403,6 @@ Example Output
 //     }
 //     return true;
 // };
-
 
 /*
 პროექტი 40 - Camel Case
@@ -455,7 +435,7 @@ Example Output
 //         }
 //         return console.log(camelToSnake(userInput))
 //     }
-    
+
 // }
 
 // // function inputValidation(message) {
@@ -470,7 +450,7 @@ Example Output
 // //             status = false;
 // //             continue;
 // //         }
-// //     }  
+// //     }
 // //     return input;
 // // }
 
@@ -507,9 +487,6 @@ Example Output
 ყველა ისეთი რიცხვის იგნორირება მოახდინეთ, რომელიც დაშვებული მონეტებიდან არც ერთს არ ემთხვევა.
 */
 
-
-
-
 // function cokeMachine() {
 //     // initialize variables for counting coins, userInput, total coke price and price that is left.
 //     let count = 0;
@@ -519,7 +496,7 @@ Example Output
 
 //     while (count < coke_price) {
 //         userInput = prompt(`Please add a coin. We only accept 5, 10 and 25 cents. You have ${priceLeft} cents to pay.`);
-    
+
 //         // check for calcellation
 //         if (userInput === null) {
 //             alert("End of program.")
@@ -528,12 +505,11 @@ Example Output
 //         // convert userInput to integer and handle empty string
 //         userCoin = userInput === "" ? NaN : parseInt(userInput);
 
-       
 //         // check for invalid inputs
 //         if (userCoin !== 10 && userCoin !== 25 && userCoin !== 5 || isNaN(userCoin)) {
 //             alert ("Please add a coin. We only accept 5, 10 and 25 cents.");
 //             continue; // invalid input so prompt again;
-//         } 
+//         }
 
 //             // update count and calculate price left
 //             count += userCoin;
@@ -553,8 +529,6 @@ Example Output
 //         }
 //     }
 
-
-
 // cokeMachine();
 
 /*
@@ -567,13 +541,9 @@ Example Output
  მაგრამ ყველა ხმოვანს (A, E, I, O და U) გამოტოვებს, მიუხედავად იმისა, დიდი ასოებით ეწერა ისინი თუ - პატარა ასოებით.
 */
 
-
 // patern-ის ცვლადი, სადაც შევინახავთ ხმოვნებს. regex = /[aeiou]/gi
 // serialization - toLowerCase() // an modifier "gi" in regex
-// replace all 
-
-
-
+// replace all
 
 // function settingUpTwtr() {
 
@@ -599,7 +569,7 @@ Example Output
 //     return replaceVowels(userInput);
 
 //     }
-    
+
 // }
 // settingUpTwtr()
 
@@ -632,13 +602,12 @@ AAA222 იქნება მისაღები, თუმცა AAA22A ა�
 // პირველი ორი ასო აუცილებლად იყოს letter: /^[A-Za-z]{2}
 // შუაში რომ არ იყოს რიცხვები 🤔
 
-
 // function validateUserPlates() {
 //     let userPlates;
 
 //     while (true) {
 //         userPlates = prompt("Please enter a desired plate number.");
-       
+
 //         // handle cancellation
 //         if (userPlates === null) {
 //             alert ("End of the program.");
@@ -663,13 +632,10 @@ AAA222 იქნება მისაღები, თუმცა AAA22A ა�
 
 // validateUserPlates()
 
-
-
 // function checkPlates(plates) {
 //     // create pattern for plates
 //     let pattern = /^[A-Z]{2}[A-Z0-9]{0,4}$/; // აქაც თუ სწორად გავიგე, 2 ასო უნდა იყოს, და რიცხვების რაოდენობას არ აქვს მნიშვნ. ამიტომ, თუ მაგ. 2 AA შეიყვანა, უკვე ვალიდურია. თუ არასწორად გავიგე პირობა, ჩავასწორებდი რეჯექსის პირობას
-    
-    
+
 //     // check for character count. Should be max 6;
 //     if (plates.length > 6) { //  თუ სწორად გავიგე პირობა და მაქს. 6 არის. თუ არა და < 6-ზეც false დაბრუნდებოდა და იქნებოდა დასავშები მხოლოდ 6 ქერექთერი.
 //         return false;
@@ -679,8 +645,7 @@ AAA222 იქნება მისაღები, თუმცა AAA22A ა�
 //     if (!plates.match(pattern)) {
 //         return false;
 //     }
-    
-    
+
 //     // find index of first occurance of number
 //     let index = plates.search(/\d/);
 //     // extract the number part from the string
@@ -717,10 +682,7 @@ AAA222 იქნება მისაღები, თუმცა AAA22A ა�
 
 // ROR ცვლადი - მომხარებლის ინფუთი
 // ფორმულა - ცალკე ფუნქცია - სადაც years = 72/ror. return ror;
-// ფუნქცია, სადაც დავჰენდლავთ ლოგიკას - მომხარებელი ვერ შეიყვანს 0-ს. ვერ შეიყვანს არა რიცხვით ინფუთს. 
-
-
-
+// ფუნქცია, სადაც დავჰენდლავთ ლოგიკას - მომხარებელი ვერ შეიყვანს 0-ს. ვერ შეიყვანს არა რიცხვით ინფუთს.
 
 // function hadnlingUserInput() {
 //     let ROR;
@@ -762,7 +724,7 @@ AAA222 იქნება მისაღები, თუმცა AAA22A ა�
 */
 
 // for loop i-ს დასაგენერირებლად და ნესთიდ ლუპი j-s დასაგენერირებლად/
-//  i = 0; j = 0; i = 0; j = 1; i = 0; 
+//  i = 0; j = 0; i = 0; j = 1; i = 0;
 
 // function multiplicationTable() {
 //     // initialize the variable to build results in
@@ -777,11 +739,10 @@ AAA222 იქნება მისაღები, თუმცა AAA22A ა�
 //     }
 //     // return the table;
 //     return table;
-    
+
 // }
 
 // console.log(multiplicationTable());
-
 
 /*
 პროექტი 46 - Karvonen Heart Rate
@@ -796,74 +757,70 @@ Karvonen Heart Rate არის ერთ-ერთი მეთოდი თ�
 გააკეთეთ ვალიდაცია, არ მისცეთ მომხმარებელს საშუალება რომ შეიყვანოს input-ში რიცხვების გარდა სხვა სიმბოლოები.
 */
 
-
 // გასასუფთავაბელია კოდი, გასასწორებელია ვალიდაცია მთლიანად.
 
 function karvorenHeartRateCalculation(age, restingHR) {
-    let target = "";
- 
-    // target გამოვთვალეთ
-    for (let i = 0.55; i <= 1; i += 0.05) {
-        let intensity = i;
-        let formula = (((220 - age) - restingHR) * intensity) + restingHR;
-        target += `${Math.floor(percentConverter(intensity))}% | ${(formula.toFixed(0))} bpm \n`
-    }
-    
-    return `Intensity | Rate\n-------------|-------- \n${target}`;
+  let target = "";
 
-
+  // loop through intensity
+  for (let i = 0.55; i <= 1; i += 0.05) {
+    // declare intensity to increase dynamically
+    let intensity = i;
+    // formula for calculating target on each iteration
+    let formula = (220 - age - restingHR) * intensity + restingHR;
+    // pushing dinamyc intensity and target values in target variable
+    target += `${Math.floor(percentConverter(intensity))}% | ${formula.toFixed(
+      0
+    )} bpm \n`;
+  }
+  // display the calculations.
+  return `Intensity | Rate\n-------------|-------- \n${target}`;
 }
 
+// convert floating numbers to percent values.
 function percentConverter(number) {
-    return number * 100;
+  return number * 100;
 }
 
-// გასასწორებელია 
-function getUserInput () {
-    let userAge, userHeartRate;
+// gather userInput
+function getUserInput() {
+  let userAge, userHeartRate;
 
-    while (true) {
-        userAge = prompt("Enter your age:");
-        validateUserInput(userAge);
+  userAge = validateUserInput("Enter your age: ");
+  // cancel program if user cancelled
+  if (userAge === null) {
+    return;
+  }
 
-        userHeartRate = prompt("Enter your resting pulse:");
-        validateUserInput(userHeartRate);
-
-       
-        // convert userInputs to numbers;
-        userAge = Number(userAge); 
-        userHeartRate = Number(userHeartRate);
-
-       
-        console.log(`${karvorenHeartRateCalculation(userAge, userHeartRate)}`);
-        return karvorenHeartRateCalculation(userAge, userHeartRate);
-
-    }
+  userHeartRate = validateUserInput("Enter your resting pulse:");
+  // cancel the program if user cancelled
+  if (userHeartRate === null) {
+    return;
+  }
+  // display / consol results if inputs were sucessfull
+  console.log(`${karvorenHeartRateCalculation(userAge, userHeartRate)}`);
+  return karvorenHeartRateCalculation(userAge, userHeartRate);
 }
 
-getUserInput()
+getUserInput();
 
-// გასასწორებელია
-function validateUserInput(input) {
-    while (true) {
-         // handle cancellation
+//     validating user input
+function validateUserInput(promptMessage) {
+  let input;
+  while (true) {
+    input = prompt(promptMessage);
+
+    // handle cancellation and display error message
     if (input === null) {
-        alert("Ending program.")
-        return;
+      alert("Ending program.");
+      return null;
     }
-     // handle non-numeric input
-     if (isNaN(input)) {
-        alert ("Please input only numbers.");
-        continue;
+    // handle invalid input and display error message. Reprompt.
+    if (isNaN(input) || input === "") {
+      alert("Please input only numbers.");
+      continue;
     }
-    return input;
-    }  
-
+    // convert successfull user input to integer.
+    return Number(input);
+  }
 }
-
-
-
-
-
-
-
