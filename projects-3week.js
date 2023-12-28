@@ -759,57 +759,169 @@ Karvonen Heart Rate არის ერთ-ერთი მეთოდი თ�
 
 // გასასუფთავაბელია კოდი, გასასწორებელია ვალიდაცია მთლიანად.
 
-function karvorenHeartRateCalculation(age, restingHR) {
-  let target = "";
+// function karvorenHeartRateCalculation(age, restingHR) {
+//   let target = "";
 
-  // loop through intensity
-  for (let i = 0.55; i <= 1; i += 0.05) {
-    // declare intensity to increase dynamically
-    let intensity = i;
-    // formula for calculating target on each iteration
-    let formula = (220 - age - restingHR) * intensity + restingHR;
-    // pushing dinamyc intensity and target values in target variable
-    target += `${Math.floor(percentConverter(intensity))}% | ${formula.toFixed(
-      0
-    )} bpm \n`;
-  }
-  // display the calculations.
-  return `Intensity | Rate\n-------------|-------- \n${target}`;
-}
+//   // loop through intensity
+//   for (let i = 0.55; i <= 1; i += 0.05) {
+//     // declare intensity to increase dynamically
+//     let intensity = i;
+//     // formula for calculating target on each iteration
+//     let formula = (220 - age - restingHR) * intensity + restingHR;
+//     // pushing dinamyc intensity and target values in target variable
+//     target += `${Math.floor(percentConverter(intensity))}% | ${formula.toFixed(
+//       0
+//     )} bpm \n`;
+//   }
+//   // display the calculations.
+//   return `Intensity | Rate\n-------------|-------- \n${target}`;
+// }
 
-// convert floating numbers to percent values.
-function percentConverter(number) {
-  return number * 100;
-}
+// // convert floating numbers to percent values.
+// function percentConverter(number) {
+//   return number * 100;
+// }
 
-// gather userInput
-function getUserInput() {
-  let userAge, userHeartRate;
+// // gather userInput
+// function getUserInput() {
+//   let userAge, userHeartRate;
 
-  userAge = validateUserInput("Enter your age: ");
-  // cancel program if user cancelled
-  if (userAge === null) {
+//   userAge = validateUserInput("Enter your age: ");
+//   // cancel program if user cancelled
+//   if (userAge === null) {
+//     return;
+//   }
+
+//   userHeartRate = validateUserInput("Enter your resting pulse:");
+//   // cancel the program if user cancelled
+//   if (userHeartRate === null) {
+//     return;
+//   }
+//   // display / consol results if inputs were sucessfull
+//   console.log(`${karvorenHeartRateCalculation(userAge, userHeartRate)}`);
+//   return karvorenHeartRateCalculation(userAge, userHeartRate);
+// }
+
+// getUserInput();
+
+// //     validating user input
+// function validateUserInput(promptMessage) {
+//   let input;
+//   while (true) {
+//     input = prompt(promptMessage);
+
+//     // handle cancellation and display error message
+//     if (input === null) {
+//       alert("Ending program.");
+//       return null;
+//     }
+//     // handle invalid input and display error message. Reprompt.
+//     if (isNaN(input) || input === "") {
+//       alert("Please input only numbers.");
+//       continue;
+//     }
+//     // convert successfull user input to integer.
+//     return Number(input);
+//   }
+// }
+
+/*
+პროექტი 47 - Guess The Number Game - თამაში რიცხვის გამოცნობაზე
+დაწერეთ თამაში Guess the Number, რომელსაც აქვს სირთულის სამი დონე. სირთულის პირველი დონე იქნება რიცხვი 1-დან 10-მდე;
+ მეორე - 1-დან 100-მდე, ხოლო მესამე - 1-დან 1000-მდე.
+მოითხოვეთ სირთულის დონე და შემდეგ დაიწყეთ თამაში.
+კომპიუტერი ირჩევს შემთხვევით რიცხვს არჩეულ დიაპაზონში და სთხოვს მოთამაშეს ამ რიცხვის გამოცნობას. 
+ყოველ ჯერზე, როცა მოთამაშე გამოიცნობს, პროგრამამ მას უნდა მიაწოდოს მინიშნება იმის შესახებ,
+არის თუ არა ეს რიცხვი გამოსაცნობ რიცხვზე მაღალი თუ დაბალი. 
+კომპიუტერმა ასევე უნდა აკონტროლოს გამოცნობის მცდელობების რაოდენობა.
+როგორც კი მოთამაშე გამოიცნობს სწორ რიცხვს, კომპიუტერმა უნდა დაბეჭდოს, თუ რამდენი მცდელობა დასჭირდა 
+მას სწორ პასუხამდე მისასვლელად და ჰკითხოს, სურს თუ არა ხელახლა თამაში.
+
+თამაშის დროს ისეთი input-ები, რომელიც არ იქნება რიცხვის ტიპის, გამოცნობის არასწორ მცდელობებად ჩათვალეთ.
+*/
+
+// დაგვჭირდება ცალ-ცალკე დონეებისთვის ცალ-ცალკე ფუნქცია. რომელსაც აირჩევს, იმ ფუნქციას გამოვიძახებთ.
+// ამ ფუნქციებში დაგვჭირდება მთვლელი, მცდელობების.
+// დაგვჭირდება მთავარი ფუნქცია, სადაც იუზერი აირჩევს დონეს და მოხდება იუზერის ვალიდაცია.
+// იუზერ ინფუთის ვალიდაცია შეგვიძლია თითოეულ დონეშ მოვახდინოთ
+
+//=======!!! გასასწორებელია და დასამთავრებელი !!! ========
+
+// function chooseTheLevel() {
+//   let userLevelInput;
+
+//   while (true) {
+//     userLevelInput = prompt("Pick a difficulty level (1, 2 or 3)");
+
+//     if (userLevelInput === null) {
+//       alert("End of the game.");
+//       return;
+//     }
+
+//     // normalizing userInput to numbers.
+//     userLevelInput = Number(userLevelInput);
+//     // make a validation of user input and call functions depending what they input
+//     switch (userLevelInput) {
+//       case 1:
+//         levelOneGame();
+//         break;
+//       case 2:
+//         levelTwoGame();
+//         break;
+//       case 3:
+//         levelThreeGame();
+//         break;
+//       default:
+//         alert("Please input 1, 2 or 3.");
+//         continue;
+//     }
+//   }
+// }
+
+// chooseTheLevel();
+
+function levelOneGame() {
+  // initialize numbers
+  let guessingNumber = Math.floor(Math.random() * 10) + 1;
+  // test
+  console.log(guessingNumber);
+  let counter = 0;
+  let userGuess;
+
+  userGuess = inputvalidator("I have my number. What is your guess?");
+  // handle cancellation
+  if (userGuess === null) {
     return;
   }
 
-  userHeartRate = validateUserInput("Enter your resting pulse:");
-  // cancel the program if user cancelled
-  if (userHeartRate === null) {
+  while (userGuess !== guessingNumber) {
+    // handle numbers out of range
+    if (userGuess > 10 || userGuess < 1) {
+      alert("Please put numbers in range of 1 to 10.");
+      userGuess = inputvalidator("I have my number. What is your guess?");
+    }
+    // game logic and counting guesses.
+    if (guessingNumber < userGuess) {
+      counter += 1;
+      userGuess = inputvalidator("Too high!");
+      continue;
+    } else if (userGuess < guessingNumber) {
+      counter += 1;
+      userGuess = inputvalidator("Too low!");
+      continue;
+    }
+    alert(`You got it in ${counter} guesses!`);
     return;
   }
-  // display / consol results if inputs were sucessfull
-  console.log(`${karvorenHeartRateCalculation(userAge, userHeartRate)}`);
-  return karvorenHeartRateCalculation(userAge, userHeartRate);
 }
 
-getUserInput();
+levelOneGame();
 
-//     validating user input
-function validateUserInput(promptMessage) {
+function inputvalidator(promptMessage) {
   let input;
+
   while (true) {
     input = prompt(promptMessage);
-
     // handle cancellation and display error message
     if (input === null) {
       alert("Ending program.");
@@ -817,7 +929,7 @@ function validateUserInput(promptMessage) {
     }
     // handle invalid input and display error message. Reprompt.
     if (isNaN(input) || input === "") {
-      alert("Please input only numbers.");
+      alert("Please input only numbers in range.");
       continue;
     }
     // convert successfull user input to integer.
