@@ -847,77 +847,129 @@ Karvonen Heart Rate არის ერთ-ერთი მეთოდი თ�
 
 //=======!!! გასასწორებელია და დასამთავრებელი !!! ========
 
-// function chooseTheLevel() {
-//   let userLevelInput;
+function chooseTheLevel() {
+  let userLevelInput;
+  let gameActive = true; // control flag
 
-//   while (true) {
-//     userLevelInput = prompt("Pick a difficulty level (1, 2 or 3)");
+  while (gameActive) {
+    userLevelInput = prompt("Pick a difficulty level (1, 2 or 3)");
 
-//     if (userLevelInput === null) {
-//       alert("End of the game.");
-//       return;
-//     }
+    if (userLevelInput === null) {
+      alert("End of the game.");
+      gameActive = false;
+      continue;
+    }
 
-//     // normalizing userInput to numbers.
-//     userLevelInput = Number(userLevelInput);
-//     // make a validation of user input and call functions depending what they input
-//     switch (userLevelInput) {
-//       case 1:
-//         levelOneGame();
-//         break;
-//       case 2:
-//         levelTwoGame();
-//         break;
-//       case 3:
-//         levelThreeGame();
-//         break;
-//       default:
-//         alert("Please input 1, 2 or 3.");
-//         continue;
-//     }
-//   }
-// }
+    // normalizing userInput to numbers.
+    userLevelInput = Number(userLevelInput);
+    // make a validation of user input and call functions depending what they input
+    switch (userLevelInput) {
+      case 1:
+        levelOneGame();
+        gameActive = false;
+        break;
+      case 2:
+        levelTwoGame();
+        gameActive = false;
+        break;
+      case 3:
+        levelThreeGame();
+        gameActive = false;
+        break;
+      default:
+        alert("Please input 1, 2 or 3.");
+        continue;
+    }
+  }
+}
 
-// chooseTheLevel();
+chooseTheLevel();
 
 function levelOneGame() {
-  // initialize numbers
   let guessingNumber = Math.floor(Math.random() * 10) + 1;
-  // test
+  let maxValue = 10;
   console.log(guessingNumber);
   let counter = 0;
   let userGuess;
 
-  userGuess = inputvalidator("I have my number. What is your guess?");
-  // handle cancellation
-  if (userGuess === null) {
-    return;
-  }
-
-  while (userGuess !== guessingNumber) {
-    // handle numbers out of range
-    if (userGuess > 10 || userGuess < 1) {
-      alert("Please put numbers in range of 1 to 10.");
-      userGuess = inputvalidator("I have my number. What is your guess?");
+  while (true) {
+    userGuess = inputvalidator(
+      "I have my number. What is your guess?",
+      maxValue
+    );
+    // handle cancellation
+    if (userGuess === null) {
+      return;
     }
-    // game logic and counting guesses.
-    if (guessingNumber < userGuess) {
-      counter += 1;
-      userGuess = inputvalidator("Too high!");
-      continue;
+    counter++;
+    if (userGuess === guessingNumber) {
+      alert(`You got it in ${counter} guesses!`);
+      return;
+    } else if (guessingNumber < userGuess) {
+      alert("Too high!");
     } else if (userGuess < guessingNumber) {
-      counter += 1;
-      userGuess = inputvalidator("Too low!");
-      continue;
+      alert("Too low!");
     }
-    alert(`You got it in ${counter} guesses!`);
-    return;
   }
 }
 
-levelOneGame();
+function levelTwoGame() {
+  let guessingNumber = Math.floor(Math.random() * 100) + 1;
+  let maxValue = 100;
+  console.log(guessingNumber);
+  let counter = 0;
+  let userGuess;
 
-function inputvalidator(promptMessage) {
+  while (true) {
+    userGuess = inputvalidator(
+      "I have my number. What is your guess?",
+      maxValue
+    );
+    // handle cancellation
+    if (userGuess === null) {
+      return;
+    }
+    counter++;
+    if (userGuess === guessingNumber) {
+      alert(`You got it in ${counter} guesses!`);
+      return;
+    } else if (guessingNumber < userGuess) {
+      alert("Too high!");
+    } else if (userGuess < guessingNumber) {
+      alert("Too low!");
+    }
+  }
+}
+
+function levelThreeGame() {
+  let guessingNumber = Math.floor(Math.random() * 1000) + 1;
+  let maxValue = 1000;
+  console.log(guessingNumber);
+  let counter = 0;
+  let userGuess;
+
+  while (true) {
+    userGuess = inputvalidator(
+      "I have my number. What is your guess?",
+      maxValue
+    );
+    // handle cancellation
+    if (userGuess === null) {
+      return;
+    }
+    counter++;
+    if (userGuess === guessingNumber) {
+      alert(`You got it in ${counter} guesses!`);
+      return;
+    } else if (guessingNumber < userGuess) {
+      alert("Too high!");
+    } else if (userGuess < guessingNumber) {
+      alert("Too low!");
+    }
+  }
+}
+
+function inputvalidator(promptMessage, maxValue) {
   let input;
 
   while (true) {
@@ -928,8 +980,8 @@ function inputvalidator(promptMessage) {
       return null;
     }
     // handle invalid input and display error message. Reprompt.
-    if (isNaN(input) || input === "") {
-      alert("Please input only numbers in range.");
+    if (isNaN(input) || input === "" || input > maxValue || input < 1) {
+      alert(`Please input only numbers between 1 and ${maxValue}.`);
       continue;
     }
     // convert successfull user input to integer.
