@@ -845,15 +845,14 @@ Karvonen Heart Rate არის ერთ-ერთი მეთოდი თ�
 // დაგვჭირდება მთავარი ფუნქცია, სადაც იუზერი აირჩევს დონეს და მოხდება იუზერის ვალიდაცია.
 // იუზერ ინფუთის ვალიდაცია შეგვიძლია თითოეულ დონეშ მოვახდინოთ
 
-//=======!!! გასასწორებელია და დასამთავრებელი !!! ========
-
+// initial choice of the level
 function chooseTheLevel() {
   let userLevelInput;
   let gameActive = true; // control flag
 
   while (gameActive) {
     userLevelInput = prompt("Pick a difficulty level (1, 2 or 3)");
-
+    // handle the cancellation
     if (userLevelInput === null) {
       alert("End of the game.");
       gameActive = false;
@@ -885,10 +884,14 @@ function chooseTheLevel() {
 
 chooseTheLevel();
 
+// function for level one
 function levelOneGame() {
   let guessingNumber = Math.floor(Math.random() * 10) + 1;
+  // setting maximum value for validator function
   let maxValue = 10;
+  // check for number for testing
   console.log(guessingNumber);
+  // initialize counter for guesses
   let counter = 0;
   let userGuess;
 
@@ -901,7 +904,9 @@ function levelOneGame() {
     if (userGuess === null) {
       return;
     }
+    // increment the counter
     counter++;
+    // aditional checks for correct input
     if (userGuess === guessingNumber) {
       alert(`You got it in ${counter} guesses!`);
       return;
@@ -912,7 +917,7 @@ function levelOneGame() {
     }
   }
 }
-
+// the same game function, only maxValue and guessingNumber are modified
 function levelTwoGame() {
   let guessingNumber = Math.floor(Math.random() * 100) + 1;
   let maxValue = 100;
@@ -940,7 +945,7 @@ function levelTwoGame() {
     }
   }
 }
-
+// the same game function, only maxValue and guessingNumber are modified
 function levelThreeGame() {
   let guessingNumber = Math.floor(Math.random() * 1000) + 1;
   let maxValue = 1000;
@@ -968,7 +973,7 @@ function levelThreeGame() {
     }
   }
 }
-
+// validating user input
 function inputvalidator(promptMessage, maxValue) {
   let input;
 
