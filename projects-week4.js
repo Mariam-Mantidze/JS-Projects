@@ -84,10 +84,17 @@
 
 function pickingAwinner() {
   let list = gatherNames();
+  if (!list || list.length === 0) {
+    // check for empty list
+    alert("No names were entered.");
+    return;
+  }
   let max = list.length;
   let randomNum = Math.floor(Math.random() * max);
 
-  alert(`Winner is ${list[randomNum]}!`);
+  // capitalize first letter
+  let randomName = capidalizeWords(list[randomNum]);
+  alert(`Winner is... ${randomName}!`);
 }
 pickingAwinner();
 
@@ -95,7 +102,7 @@ function gatherNames() {
   let input;
   let listOfNames = [];
   while (true) {
-    input = inputValidator("Enter a name.");
+    input = inputValidator("Enter a name (or leave blank to finish):");
     //handle cancellation
     if (input === null) {
       return;
@@ -111,9 +118,9 @@ function gatherNames() {
 // gatherNames();
 function inputValidator(promptMessage) {
   let userInput;
+  let pattern = /^[A-Za-z\s]*$/;
 
   while (true) {
-    let pattern = /^[A-Za-z\s]*$/;
     userInput = prompt(promptMessage);
 
     // handle cancellation
@@ -136,4 +143,10 @@ function inputValidator(promptMessage) {
       continue;
     }
   }
+}
+function capidalizeWords(name) {
+  return name
+    .split(" ")
+    .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
 }
